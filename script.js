@@ -37,6 +37,15 @@ function makeReadButton(index){
   })
   return button;
 }
+function makeDeleteButton(index){
+  let button = document.createElement('button');
+  button.textContent = 'Delete';
+  button.addEventListener('click', ()=>{
+    myLibrary.splice(index, 1);
+    showBooks();
+  })
+  return button;
+}
 function makeRow(book, index){
   let tr = document.createElement('tr');
   tr.dataset.listIndex = index;
@@ -45,6 +54,7 @@ function makeRow(book, index){
   tr.appendChild(makeTableData(book.numPages));
   tr.appendChild(makeTableData(book.isRead));
   tr.appendChild(makeReadButton(index));
+  tr.appendChild(makeDeleteButton(index));
   return tr;
 }
 
@@ -62,3 +72,10 @@ function showBooks(){
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
+addBookToLibrary(book1);
+addBookToLibrary(book2);
+addBookToLibrary(book1);
+addBookToLibrary(book2);
+addBookToLibrary(book1);
+addBookToLibrary(book2);
+showBooks();
