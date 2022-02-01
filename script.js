@@ -77,3 +77,15 @@ addBookToLibrary(book1);
 addBookToLibrary(book2);
 showBooks();
 
+
+const addBookButton = document.querySelector('#addBookButton');
+addBookButton.addEventListener('click', ()=>{
+  const inputTitle = document.querySelector('#input-title');
+  const inputAuthor = document.querySelector('#input-author');
+  const inputPages = document.querySelector('#input-pages');
+  const inputRadioRead = document.querySelector('#radioRead');
+  let tempBook = new Book(inputTitle.value, inputAuthor.value, inputPages.value, inputRadioRead.checked);
+  addBookToLibrary(tempBook);
+  showBooks();
+  }
+)
