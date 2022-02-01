@@ -14,11 +14,6 @@ function Book(title, author, numPages, isRead){
 
 const book1 = new Book('University', 'zimansky', 5627, true);
 const book2 = new Book('Physics', 'LRT', 69420, false);
-console.log(book1.info());
-console.log(book2.info());
-
-
-
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
@@ -29,22 +24,26 @@ function makeTableData(content){
   return td;
 }
 function makeReadButton(index){
+  let td = document.createElement('td'); 
   let button = document.createElement('button');
   button.textContent = myLibrary[index].isRead ? "UnRead":"Read";
   button.addEventListener('click', ()=>{
     myLibrary[index].isRead = !myLibrary[index].isRead;
     showBooks();
   })
-  return button;
+  td.appendChild(button)
+  return td;
 }
 function makeDeleteButton(index){
+  let td = document.createElement('td');
   let button = document.createElement('button');
   button.textContent = 'Delete';
   button.addEventListener('click', ()=>{
     myLibrary.splice(index, 1);
     showBooks();
   })
-  return button;
+  td.appendChild(button)
+  return td;
 }
 function makeRow(book, index){
   let tr = document.createElement('tr');
@@ -52,7 +51,7 @@ function makeRow(book, index){
   tr.appendChild(makeTableData(book.title));
   tr.appendChild(makeTableData(book.author));
   tr.appendChild(makeTableData(book.numPages));
-  tr.appendChild(makeTableData(book.isRead));
+  tr.appendChild(makeTableData(book.isRead? 'Yes':'No'));
   tr.appendChild(makeReadButton(index));
   tr.appendChild(makeDeleteButton(index));
   return tr;
@@ -60,7 +59,6 @@ function makeRow(book, index){
 
 function showBooks(){
   let tableRowList = document.querySelector('tbody').children;
-  console.log(tableRowList);
   while(tableRowList.length > 0){  //emptying table
     tableRowList[0].remove();
   }
