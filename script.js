@@ -23,28 +23,39 @@ console.log(book2.info());
 function addBookToLibrary(book) {
   myLibrary.push(book);
 }
-
 function makeTableData(content){
   let td = document.createElement('td');
   td.textContent = content;
   return td;
 }
-function makeRow(book){
+function makeReadButton(index){
+  let button = document.createElement('button');
+  button.textContent = myLibrary[index].isRead ? "UnRead":"Read";
+  button.addEventListener('click', ()=>{
+    myLibrary[index].isRead = !myLibrary[index].isRead;
+    showBooks();
+  })
+  return button;
+}
+function makeRow(book, index){
   let tr = document.createElement('tr');
+  tr.dataset.listIndex = index;
   tr.appendChild(makeTableData(book.title));
   tr.appendChild(makeTableData(book.author));
   tr.appendChild(makeTableData(book.numPages));
   tr.appendChild(makeTableData(book.isRead));
+  tr.appendChild(makeReadButton(index));
   return tr;
 }
 
 function showBooks(){
-  const tableRowList = document.querySelector('table').children[0].children;
-  while(tableRowList.length > 1){  //emptying table
-    tableRowList[1].remove();
+  let tableRowList = document.querySelector('tbody').children;
+  console.log(tableRowList);
+  while(tableRowList.length > 0){  //emptying table
+    tableRowList[0].remove();
   }
   for(let i=0; i<myLibrary.length; ++i){
-    document.querySelector('table').appendChild(makeRow(myLibrary[i]));
+    document.querySelector('tbody').appendChild(makeRow(myLibrary[i], i));
   }
 }
 
