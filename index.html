@@ -27,6 +27,33 @@
             </tr>
         </tbody>
     </table>
+
+    <div class="form">
+        <div class="label-input">
+            <label for="input-title">Title:</label>
+            <input type="text" id="input-title">
+        </div>
+        <div class="label-input">
+            <label for="input-author">Author:</label>
+            <input type="text" id="input-author">
+        </div>
+        <div class="label-input">
+            <label for="input-pages">Pages:</label>
+            <input type="number" id="input-pages">
+        </div>
+        <div class="radioRead">
+            <fieldset>
+                <legend>Have you read this book?</legend>
+                <input type="radio" id="radioRead" name="RADIOREAD" checked>
+                <label for="radioRead">Read</label>
+                <br>
+                <input type="radio" id="radioUnread" name="RADIOREAD">
+                <label for="radioUnread">Unread</label>
+            </fieldset>
+        </div>
+        <button>Add Book</button>
+        
+    </div>
     
 
     <script src="script.js"></script>

@@ -56,7 +56,6 @@ function makeRow(book, index){
   tr.appendChild(makeDeleteButton(index));
   return tr;
 }
-
 function showBooks(){
   let tableRowList = document.querySelector('tbody').children;
   while(tableRowList.length > 0){  //emptying table
@@ -77,3 +76,4 @@ addBookToLibrary(book2);
 addBookToLibrary(book1);
 addBookToLibrary(book2);
 showBooks();
+
